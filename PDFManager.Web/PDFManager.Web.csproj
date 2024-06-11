@@ -20,4 +20,9 @@
     <Folder Include="wwwroot\pdfs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\home\index.js" />
+    <None Include="wwwroot\pdf-viewer.html" />
+  </ItemGroup>
+
 </Project>

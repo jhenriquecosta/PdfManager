@@ -8,7 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Acessar a configuração
 var configuration = builder.Configuration;
-
+// Configurar CORS se necessário
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -47,6 +56,8 @@ if (!app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Usar CORS
+app.UseCors("MyCorsPolicy");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
